@@ -33,6 +33,10 @@ else:
     days = days.drop(travel_days)
     holidays = [
         datetime.date(year=2017, month=12, day=25),
+        datetime.date(year=2017, month=12, day=26),
+        datetime.date(year=2017, month=12, day=27),
+        datetime.date(year=2017, month=12, day=28),
+        datetime.date(year=2017, month=12, day=29),
         datetime.date(year=2018, month=1, day=1),
         datetime.date(year=2018, month=1, day=15),
         datetime.date(year=2018, month=2, day=19)
