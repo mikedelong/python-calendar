@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 import datetime
 
-start_date = datetime.datetime.today()
-end_date = datetime.datetime(year=2018, month=2, day=28)
+start_date = datetime.datetime.today().date()
+end_date = datetime.date(year=2018, month=2, day=28)
 
 use_workdays = True
 if use_workdays:
@@ -21,12 +21,20 @@ if random_days:
     days = np.random.choice(all_days, 50)
 else:
     days = all_days.copy()
+    # todo remove any holidays here
+    mlk_day = datetime.date(year=2018, month=1, day=15)
+    holidays = [mlk_day]
+    days.drop(holidays)
+
+seventy = int(0.7 * len(days))
+eighty = int(0.8 * len(days))
+ninety = int(0.9 * len(days))
 
 random_events = False
 if random_events:
     events = pd.Series(np.random.randn(len(days)), index=days)
 else:
-    values = [index for index in range(0, len(days))]
+    values = [10 if index > seventy else 1 for index in range(0, len(days))]
     events = pd.Series(values, index=days)
 
 calmap.calendarplot(events,
