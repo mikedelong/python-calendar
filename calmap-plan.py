@@ -7,7 +7,14 @@ import datetime
 
 start_date = datetime.datetime.today()
 end_date = datetime.datetime(year=2018, month=2, day=28)
-all_days = pd.date_range(start=start_date, end=end_date, freq='B')
+
+use_workdays = True
+if use_workdays:
+    frequency = 'B'
+else:
+    frequency = 'D'
+
+all_days = pd.date_range(start=start_date, end=end_date, freq=frequency)
 
 random_days = False
 if random_days:
