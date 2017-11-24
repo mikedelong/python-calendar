@@ -21,7 +21,13 @@ if random_days:
     days = np.random.choice(all_days, 50)
 else:
     days = all_days.copy()
-events = pd.Series(np.random.randn(len(days)), index=days)
+
+random_events = False
+if random_events:
+    events = pd.Series(np.random.randn(len(days)), index=days)
+else:
+    values = [index for index in range(0, len(days))]
+    events = pd.Series(values, index=days)
 
 calmap.calendarplot(events,
                     cmap='YlGn',
