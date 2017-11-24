@@ -24,7 +24,7 @@ else:
     # todo remove any holidays here
     mlk_day = datetime.date(year=2018, month=1, day=15)
     holidays = [mlk_day]
-    days.drop(holidays)
+    days = days.drop(holidays)
 
 seventy = int(0.7 * len(days))
 eighty = int(0.8 * len(days))
