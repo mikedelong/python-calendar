@@ -57,10 +57,10 @@ else:
 
 calmap.calendarplot(events,
                     cmap='YlGn',
-                    daylabels='MTWTFSS',
                     fig_kws=dict(figsize=(8, 4)),
                     linewidth=0,
                     monthticks=3,
+                    # daylabels='MTWTFSS',
                     # dayticks=[0, 2, 4, 6],
                     # fillcolor='grey',
                     )
