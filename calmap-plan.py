@@ -1,8 +1,9 @@
+import datetime
+
 import calmap
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import datetime
 
 start_date = datetime.datetime.today().date()
 end_date = datetime.date(year=2018, month=2, day=28)
