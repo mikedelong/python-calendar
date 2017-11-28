@@ -1,12 +1,13 @@
 # https://plot.ly/python/heatmaps/
 
-import datetime
-import numpy as np
-import plotly.offline
-import plotly.graph_objs as graph_objects
 import calendar
+import datetime
 
-items = ['Days']
+import numpy as np
+import plotly.graph_objs as graph_objects
+import plotly.offline
+
+items = ['days']
 
 end_date = datetime.date(year=2018, month=2, day=26)
 start_date = datetime.date.today()
@@ -27,7 +28,6 @@ for item in items:
             index = len(new_row)
             fraction = index / busday_count
             level = 0 if fraction > 0.3 else 1 if fraction > 0.2 else 2 if fraction > 0.1 else 3
-            # new_row.append(np.random.randint(low=0, high=4))
             print(str(date) + ' ' + calendar.day_name[date.weekday()] + ' ' + str(level))
             new_row.append(level)
             weekday_count += 1
@@ -44,11 +44,8 @@ data = [
     )
 ]
 
-layout = graph_objects.Layout(
-    # title='...',
-    xaxis=dict(ticks='', nticks=36),
-    yaxis=dict(ticks='')
-)
+nticks = busday_count / 5  # was 36
+layout = graph_objects.Layout(xaxis=dict(ticks='', nticks=nticks), yaxis=dict(ticks=''))
 
 fig = graph_objects.Figure(data=data, layout=layout)
 plotly.offline.plot(fig, filename='datetime-heatmap.html')
