@@ -5,14 +5,19 @@ import numpy as np
 import plotly.offline
 import plotly.graph_objs as go
 
-programmers = ['Alex', 'Nicole', 'Sara', 'Etienne', 'Chelsea', 'Jody', 'Marianne']
+programmers = ['Alex', 'Nicole',
+               # 'Sara', 'Etienne', 'Chelsea', 'Jody', 'Marianne'
+               ]
 
-base = datetime.datetime.today()
-date_list = [base - datetime.timedelta(days=x) for x in range(0, 180)]
+end_date = datetime.date(year=2018, month=2, day=26)
+start_date  = datetime.date.today()
+
+day_count = (end_date - start_date).days
+date_list = [end_date - datetime.timedelta(days=x) for x in range(0, day_count)]
 
 z = []
 
-for prgmr in programmers:
+for person in programmers:
     new_row = []
     for date in date_list:
         new_row.append(np.random.poisson())
@@ -34,4 +39,4 @@ layout = go.Layout(
 )
 
 fig = go.Figure(data=data, layout=layout)
-plotly.offline.plot(fig, filename='datetime-heatmap')
+plotly.offline.plot(fig, filename='datetime-heatmap.html')
