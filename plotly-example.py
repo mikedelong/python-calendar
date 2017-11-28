@@ -24,8 +24,12 @@ for item in items:
     new_row = []
     for date in date_list:
         if date.weekday() < 5:
-            print(str(date) + ' ' + calendar.day_name[date.weekday()])
-            new_row.append(np.random.randint(low=0, high=4))
+            index = len(new_row)
+            fraction = index / busday_count
+            level = 0 if fraction > 0.3 else 1 if fraction > 0.2 else 2 if fraction > 0.1 else 3
+            # new_row.append(np.random.randint(low=0, high=4))
+            print(str(date) + ' ' + calendar.day_name[date.weekday()] + ' ' + str(level))
+            new_row.append(level)
             weekday_count += 1
     z.append(list(new_row))
 
