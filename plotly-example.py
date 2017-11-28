@@ -35,4 +35,3 @@ layout = go.Layout(
 
 fig = go.Figure(data=data, layout=layout)
 plotly.offline.plot(fig, filename='datetime-heatmap')
-pass
