@@ -4,6 +4,7 @@ import datetime
 import numpy as np
 import plotly.offline
 import plotly.graph_objs as graph_objects
+import calendar
 
 items = ['Days']
 
@@ -15,13 +16,16 @@ date_list = [end_date - datetime.timedelta(days=x) for x in range(0, day_count)]
 
 z = []
 
+busday_count = np.busday_count(start_date, end_date)
+print(busday_count)
+
 weekday_count = 0
 for item in items:
     new_row = []
     for date in date_list:
-        if date.weekday():
-            print(date)
-            new_row.append(np.random.poisson())
+        if date.weekday() < 5:
+            print(str(date) + ' ' + calendar.day_name[date.weekday()])
+            new_row.append(np.random.randint(low=0, high=4))
             weekday_count += 1
     z.append(list(new_row))
 
