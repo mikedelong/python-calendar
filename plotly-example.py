@@ -16,7 +16,6 @@ day_count = (end_date - start_date).days
 date_list = [end_date - datetime.timedelta(days=day) for day in range(0, day_count)]
 
 busday_count = np.busday_count(start_date, end_date)
-print(busday_count)
 
 weekday_count = 0
 rows = []
@@ -26,6 +25,7 @@ for item in items:
         if date.weekday() < 5:
             index = len(new_row)
             fraction = index / busday_count
+            # todo handle holidays differently here
             level = 0 if fraction > 0.3 else 1 if fraction > 0.2 else 2 if fraction > 0.1 else 3
             print(str(date) + ' ' + calendar.day_name[date.weekday()] + ' ' + str(level))
             new_row.append(level)
