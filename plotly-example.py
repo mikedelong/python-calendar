@@ -13,14 +13,13 @@ end_date = datetime.date(year=2018, month=2, day=26)
 start_date = datetime.date.today()
 
 day_count = (end_date - start_date).days
-date_list = [end_date - datetime.timedelta(days=x) for x in range(0, day_count)]
-
-z = []
+date_list = [end_date - datetime.timedelta(days=day) for day in range(0, day_count)]
 
 busday_count = np.busday_count(start_date, end_date)
 print(busday_count)
 
 weekday_count = 0
+rows = []
 for item in items:
     new_row = []
     for date in date_list:
@@ -31,14 +30,14 @@ for item in items:
             print(str(date) + ' ' + calendar.day_name[date.weekday()] + ' ' + str(level))
             new_row.append(level)
             weekday_count += 1
-    z.append(list(new_row))
+    rows.append(list(new_row))
 
 print('weekdays: ' + str(weekday_count) + ' total days: ' + str(day_count))
 # colorscale = 'Viridis'
 colorscale = 'Plasma'
 data = [
     graph_objects.Heatmap(
-        z=z,
+        z=rows,
         x=date_list,
         y=items,
         colorscale=colorscale,
