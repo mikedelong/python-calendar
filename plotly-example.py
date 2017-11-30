@@ -34,7 +34,8 @@ for item in items:
     z.append(list(new_row))
 
 print('weekdays: ' + str(weekday_count) + ' total days: ' + str(day_count))
-colorscale = 'Viridis'
+# colorscale = 'Viridis'
+colorscale = 'Plasma'
 data = [
     graph_objects.Heatmap(
         z=z,
