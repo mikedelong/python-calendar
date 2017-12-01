@@ -19,10 +19,11 @@ busday_count = np.busday_count(start_date, end_date)
 
 holidays = [
     datetime.date(2017, 12, 25),
-    datetime.date(2017, 12, 31),
+    # datetime.date(2017, 12, 31),
     datetime.date(2018, 1, 1),
     datetime.date(2018, 1, 15),
 ]
+
 weekday_count = 0
 rows = []
 for item in items:
@@ -33,7 +34,6 @@ for item in items:
                 level = 0
                 print(str(date) + ' Holiday ' + str(level))
                 new_row.append(level)
-                pass
             else:
                 index = len(new_row)
                 fraction = index / busday_count
