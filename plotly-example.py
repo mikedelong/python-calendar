@@ -13,7 +13,8 @@ end_date = datetime.date(year=2018, month=2, day=26)
 start_date = datetime.date.today()
 
 day_count = (end_date - start_date).days
-date_list = [end_date - datetime.timedelta(days=day) for day in range(0, day_count)]
+# date_list = [end_date - datetime.timedelta(days=day) for day in range(0, day_count)]
+date_list = [start_date + datetime.timedelta(days=day) for day in range(0, day_count)]
 
 busday_count = np.busday_count(start_date, end_date)
 
@@ -34,10 +35,11 @@ for item in items:
                 level = 0
                 print(str(date) + ' Holiday ' + str(level))
                 new_row.append(level)
+                busday_count += 1
             else:
                 index = len(new_row)
                 fraction = index / busday_count
-                level = 1 if fraction > 0.3 else 2 if fraction > 0.2 else 3 if fraction > 0.1 else 4
+                level = 1 if fraction < 0.7 else 2 if fraction < 0.8 else 3 if fraction < 0.9 else 4
                 print(str(date) + ' ' + calendar.day_name[date.weekday()] + ' ' + str(level))
                 weekday_count += 1
             new_row.append(level)
