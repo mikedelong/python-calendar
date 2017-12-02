@@ -22,8 +22,6 @@ holidays = [
 date_list = [start_date + datetime.timedelta(days=day) for day in range(0, day_count) if
              (start_date + datetime.timedelta(days=day)).weekday() < 5]
 
-
-
 weekday_count = 0
 rows = []
 for item in items:
