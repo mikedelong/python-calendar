@@ -34,8 +34,9 @@ for item in items:
             if date in holidays:
                 level = 0
                 print(str(date) + ' Holiday ' + str(level))
-                new_row.append(level)
-                busday_count += 1
+                # new_row.append(level)
+                # busday_count += 1
+                # weekday_count += 1
             else:
                 index = len(new_row)
                 fraction = index / busday_count
